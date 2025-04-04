@@ -5,12 +5,14 @@ public class Inventory : MonoBehaviour
 {
     public List<CollectableItem> CollectableItems = new List<CollectableItem>();
     public int InventorySize = 10;
+    public ScoreCounter ScoreCounter;
 
     public bool AddItem(CollectableItem item)
     {
         if (CollectableItems.Count < InventorySize)
         {
             CollectableItems.Add(item);
+            ScoreCounter.ChangeScore(item.ScoreValue);
             Debug.Log("added Item");
         }
         else

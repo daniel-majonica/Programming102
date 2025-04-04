@@ -4,7 +4,9 @@ public class CollectableCoin : CollectableItem
 {
     private void Awake()
     {
+        ScoreValue = 3;
         ItemName = "Coin";
+
     }
 
     // Update is called once per frame
