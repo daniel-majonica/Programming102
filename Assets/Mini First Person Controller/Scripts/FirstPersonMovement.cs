@@ -5,6 +5,11 @@ public class FirstPersonMovement : MonoBehaviour
 {
     public float speed = 5;
 
+    [Header("Health")]
+    public float MaxHealth = 10;
+    public float CurrentHealth { get; private set; }
+
+
     [Header("Running")]
     public float MaxStamina = 2;
     public float StaminaDrainRecoveryRate = 0.5f;
@@ -27,6 +32,7 @@ public class FirstPersonMovement : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
 
         CurrentStamina = MaxStamina;
+        CurrentHealth = MaxHealth;
     }
 
     void FixedUpdate()
@@ -56,5 +62,15 @@ public class FirstPersonMovement : MonoBehaviour
 
         // Apply movement.
         rigidbody.linearVelocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.linearVelocity.y, targetVelocity.y);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        CurrentHealth -= damage;
+        Debug.Log("damage taken: " +  damage);
+        if (CurrentHealth <= 0)
+        {
+            Debug.Log("Game Over");
+        }
     }
 }
