@@ -7,16 +7,6 @@ public class CollectableCoin : CollectableItem
         ItemName = "Coin";
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Inventory playerInv = other.GetComponent<Inventory>();
-        if (playerInv != null)
-        {
-            playerInv.AddItem(this);
-            Destroy(gameObject);
-        }
-    }
-
     // Update is called once per frame
     void Update()
     {
